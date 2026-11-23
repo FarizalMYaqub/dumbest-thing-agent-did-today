@@ -18,10 +18,13 @@ characters) and writes it to /output/entry.txt, where the house
 judge reads it.
 """
 
+import os
 from pathlib import Path
 
 MAX_CHARS = 200
-OUT_PATH = Path("/output/entry.txt")
+# The grader sets MAKEFUN_OUTPUT_DIR; fall back to /output so the
+# program also runs unchanged on a plain machine.
+OUT_PATH = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")) / "entry.txt"
 
 LINE = "My agent couldn't clone its own repo, so it uploaded every file through the API by hand and called it the plan."
 
